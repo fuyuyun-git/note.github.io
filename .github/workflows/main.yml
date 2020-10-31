@@ -24,11 +24,11 @@ jobs:
     - name: Run asciidoctor
       uses: Analog-inc/asciidoctor-action@master
       with:
-        shellCommand: "asciidoctor doc/index.adoc doc/**/index.adoc -R doc/ -D out"
+        shellCommand: "asciidoctor docs/index.adoc docs/**/index.adoc -R docs/ -D out"
     
     - name: Copy resources
       run:
-        sudo cp -r doc/images out/
+        sudo cp -r docs/images out/
     
     - name: Publish gh-pages
       uses: peaceiris/actions-gh-pages@v3
