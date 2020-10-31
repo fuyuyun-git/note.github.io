@@ -1,0 +1,27 @@
+== *Asciidocの使い方*
+
+*基本的な使い方*
+
+拡張子.adocで保存する。 
+ターミナルで下記のように実行するとhtmlが作成される。 
+
+ asciidoctor ファイル名.adoc
+
+*記法*
+
+ == レベル1
+
+== レベル1
+
+ === レベル2
+
+=== レベル2
+
+ ==== レベル3
+
+==== レベル3
+
+ http://asciidoctor.org/[asciidocリンク]
+
+http://asciidoctor.org/[asciidocリンク]
+
