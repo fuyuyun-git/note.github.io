@@ -21,8 +21,8 @@
 
 ==== レベル3
 
- http://asciidoctor.org/[asciidocリンク]
+ http://asciidoctor.org/[asciidocのリンク]
 
-http://asciidoctor.org/[asciidocリンク]
+http://asciidoctor.org/[asciidocのリンク]
 
 
