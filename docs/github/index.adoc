@@ -1,0 +1,51 @@
+== *Githubの使い方*
+
+=== *基本的な手順*
+
+. gitリポジトリをローカルに新たに作成する
+
+ git init
+
+. ファイルの作成／変更／削除をgitのインデクスに追加する
+
+ git add hello.html
+
+* 全てのファイル／ディレクトリを追加する
+
+ git add .
+
+. 変更結果をローカルリポジトリにコミットする
+
+ git commit -m "add new file"
+
+* 変更のあった全てのファイルをコミットする
+
+ git commit -a
+
+* 変更点を表示してコミット
+
+ git commit -v
+
+. リモートリポジトリの情報を追加する
+
+ git remote add origin https://github.com//hello/git
+
+. ローカルリポジトリをプッシュしてリモートリポジトリへ反映する
+
+ git push origin main
+
+=== *その他基本*
+
+** 確認する
+
+ git status
+
+** ブランチ一覧を見る
+
+ git branch
+
+
+** エラー対応
+*** git pushがrejectされた時
+
+  git pull origin main
