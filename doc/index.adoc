@@ -1,0 +1,3 @@
+fuyuyunnote
+
+link:asciidoc_how[asciidoc]
