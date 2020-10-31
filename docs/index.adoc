@@ -6,7 +6,12 @@
 :chapter-label:
 
 
-= fuyuyun-note
+= fuyu-note
 
 *目次*
-link:asciidoc[asciidoc link]
+
+* asciidocの使い方 +
+link:asciidoc[asciidoc]
+
+* githubの使い方 +
+link:github[github]
