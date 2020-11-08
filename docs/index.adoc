@@ -8,6 +8,9 @@
 
 = fuyu-note
 
+== DDDの研究
+link:DDD[DDD]
+
 == asciidocの使い方
 link:asciidoc[asciidoc]
 
