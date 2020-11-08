@@ -1,0 +1,7 @@
+== *other memo*
+
+* 8080 already in useが出たとき
+
+ sudo lsof -i :8080
+
+ sudo kill -9 2866

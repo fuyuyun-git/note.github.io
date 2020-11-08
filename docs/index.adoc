@@ -8,10 +8,12 @@
 
 = fuyu-note
 
-*目次*
-
-* asciidocの使い方 +
+== asciidocの使い方
 link:asciidoc[asciidoc]
 
-* githubの使い方 +
+== githubの使い方
 link:github[github]
+
+== その他
+link:other memo[other]
+
