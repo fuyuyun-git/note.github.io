@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Githubの使い方</title>
+<title>fuyu-note - github</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -436,17 +436,32 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
+<h1>fuyu-note - github</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_githubの使い方">1. <strong>Githubの使い方</strong></a>
+<ul class="sectlevel2">
+<li><a href="#_基本的な手順">1.1. <strong>基本的な手順</strong></a></li>
+<li><a href="#_その他基本">1.2. <strong>その他基本</strong></a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_githubの使い方"><strong>Githubの使い方</strong></h2>
+<h2 id="_githubの使い方"><a class="anchor" href="#_githubの使い方"></a>1. <strong>Githubの使い方</strong></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_基本的な手順"><strong>基本的な手順</strong></h3>
+<h3 id="_基本的な手順"><a class="anchor" href="#_基本的な手順"></a>1.1. <strong>基本的な手順</strong></h3>
 <div class="olist arabic">
 <ol class="arabic">
+<li>
+<p>ローカルリポジトリの場所に移動する</p>
+</li>
 <li>
 <p>gitリポジトリをローカルに新たに作成する</p>
 <div class="literalblock">
@@ -493,7 +508,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </li>
 <li>
-<p>変更点を表示してコミット</p>
+<p>変更点を表示してコミットする</p>
 <div class="literalblock">
 <div class="content">
 <pre>git commit -v</pre>
@@ -504,10 +519,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </li>
 <li>
-<p>リモートリポジトリの情報を追加する</p>
+<p>履歴を求められたら入力する</p>
+<div class="ulist">
+<ul>
+<li>
+<p>書き終わったら</p>
 <div class="literalblock">
 <div class="content">
-<pre>git remote add origin https://github.com//hello/git</pre>
+<pre>Esc
+:wq</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>リモートリポジトリの情報を追加する（二回目は不要）</p>
+<div class="literalblock">
+<div class="content">
+<pre>git remote add origin https://github.com//XXXXX</pre>
 </div>
 </div>
 </li>
@@ -523,7 +554,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_その他基本"><strong>その他基本</strong></h3>
+<h3 id="_その他基本"><a class="anchor" href="#_その他基本"></a>1.2. <strong>その他基本</strong></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -565,7 +596,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-08 11:58:09 UTC
+Last updated 2020-11-08 12:13:41 UTC
 </div>
 </div>
 </body>
