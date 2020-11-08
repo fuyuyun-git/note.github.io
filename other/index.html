@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>Githubの使い方</title>
+<title>other memo</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -441,124 +441,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_githubの使い方"><strong>Githubの使い方</strong></h2>
+<h2 id="_other_memo"><strong>other memo</strong></h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_基本的な手順"><strong>基本的な手順</strong></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>gitリポジトリをローカルに新たに作成する</p>
-<div class="literalblock">
-<div class="content">
-<pre>git init</pre>
-</div>
-</div>
-</li>
-<li>
-<p>ファイルの作成／変更／削除をgitのインデクスに追加する</p>
-<div class="literalblock">
-<div class="content">
-<pre>git add hello.html</pre>
-</div>
-</div>
 <div class="ulist">
 <ul>
 <li>
-<p>全てのファイル／ディレクトリを追加する</p>
+<p>8080 already in useが出たとき</p>
 <div class="literalblock">
 <div class="content">
-<pre>git add .</pre>
+<pre>sudo lsof -i :8080</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo kill -9 2866</pre>
 </div>
 </div>
 </li>
 </ul>
-</div>
-</li>
-<li>
-<p>変更結果をローカルリポジトリにコミットする</p>
-<div class="literalblock">
-<div class="content">
-<pre>git commit -m "add new file"</pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>変更のあった全てのファイルをコミットする</p>
-<div class="literalblock">
-<div class="content">
-<pre>git commit -a</pre>
-</div>
-</div>
-</li>
-<li>
-<p>変更点を表示してコミット</p>
-<div class="literalblock">
-<div class="content">
-<pre>git commit -v</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>リモートリポジトリの情報を追加する</p>
-<div class="literalblock">
-<div class="content">
-<pre>git remote add origin https://github.com//hello/git</pre>
-</div>
-</div>
-</li>
-<li>
-<p>ローカルリポジトリをプッシュしてリモートリポジトリへ反映する</p>
-<div class="literalblock">
-<div class="content">
-<pre>git push origin main</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_その他基本"><strong>その他基本</strong></h3>
-<div class="ulist">
-<ul>
-<li>
-<p>確認する</p>
-<div class="literalblock">
-<div class="content">
-<pre>git status</pre>
-</div>
-</div>
-</li>
-<li>
-<p>ブランチ一覧を見る</p>
-<div class="literalblock">
-<div class="content">
-<pre>git branch</pre>
-</div>
-</div>
-</li>
-<li>
-<p>エラー対応</p>
-<div class="ulist">
-<ul>
-<li>
-<p>git pushがrejectされた時</p>
-<div class="literalblock">
-<div class="content">
-<pre>git pull origin main</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
 </div>
 </div>
 </div>
