@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>fuyu-note - other memo</title>
+<title>fuyu-note - DDD</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -438,34 +438,169 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>fuyu-note - other memo</h1>
+<h1>fuyu-note - DDD</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_other_memo">1. <strong>other memo</strong></a></li>
+<li><a href="#_dddの概念整理">1. <strong>DDDの概念整理</strong></a></li>
+<li><a href="#_ヘキサゴナルアーキテクチャ概念整理">2. <strong>ヘキサゴナルアーキテクチャ概念整理</strong></a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_other_memo"><a class="anchor" href="#_other_memo"></a>1. <strong>other memo</strong></h2>
+<h2 id="_dddの概念整理"><a class="anchor" href="#_dddの概念整理"></a>1. <strong>DDDの概念整理</strong></h2>
 <div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">ドメイン</dt>
+<dd>
+<p>チームが取り組んでいる事業全体</p>
+</dd>
+<dt class="hdlist1">コアドメイン</dt>
+<dd>
+<p>組織を成功に導くためにもっとも重要なもの。事業的にほかと差別化されており、最優先で取り組まれる。置かれている状況によって、コアドメインが変化していくことがある。</p>
+</dd>
+<dt class="hdlist1">サブドメイン</dt>
+<dd>
+<p>コアドメインから使われる必要な部分</p>
 <div class="ulist">
 <ul>
 <li>
-<p>8080 already in useが出たとき</p>
-<div class="literalblock">
-<div class="content">
-<pre>sudo lsof -i :8080</pre>
+<p>支援サブドメイン: 業務的に特別だが、コアドメインほど重要ではないもの<br></p>
+</li>
+<li>
+<p>汎用サブドメイン: 業務的に特別ではないが、全体として必要なもの（認証系、外部ERPなど差し替え可能なもの）</p>
+</li>
+</ul>
 </div>
+</dd>
+<dt class="hdlist1">境界づけられたコンテキスト</dt>
+<dd>
+<p>戦略的/業務的なドメインの問題を技術的なソリューションにて解決するもの。ユビキタス言語の意味が変わる境界で「境界づけられたコンテキスト」を分割して管理する。</p>
+</dd>
+</dl>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>sudo kill -9 2866</pre>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+1つの「コアドメイン（もしくはサブドメイン）」に、1つの「境界づけられたコンテキスト」が対応している状態が最適
+</td>
+</tr>
+</table>
 </div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">コンテキストマップ</dt>
+<dd>
+<p>複数の「境界づけられたコンテキスト」間の関係を俯瞰する地図となり、システムの全体像や相互関係を把握することができる。
+「境界づけられたコンテキスト」を丸で囲み、コンテキスト間の関係を線でつなぐシンプルな図。チーム間のコミュケーション関係を示す図の意味合いが強い。コンテキストマップは、連携するチームとの関係性を示すドキュメントであるため、なるべく早いうちに作成することが良い。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>組織パターン</p>
+<div class="ulist">
+<ul>
+<li>
+<p>パートナーシップ<br>
+2つのチームにおいて協力的な関係が成り立つ</p>
+</li>
+<li>
+<p>別別の道<br>
+コンテキスト間で統合を行わない</p>
+</li>
+<li>
+<p>順応者<br>
+2つのチーム間において、上流側が下流側の要望を考慮する必要がない状態</p>
+</li>
+<li>
+<p>顧客／供給者<br>
+上流側チームの成否が下流側チームの成否に影響を大きく与える場合、上流側のチームが下流側のチームに対して適切なサポートを行う。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>統合パターン</p>
+<div class="ulist">
+<ul>
+<li>
+<p>共有カーネル<br>
+「共有カーネル」は複数ドメインにおいて共有が必要な部分に、共通で使用するドメインモデルを構築してソースコードレベルで共有する。</p>
+</li>
+<li>
+<p>巨大な泥団子<br>
+既存システムが大規模で複雑な場合、そのまま大きな固まりとして捉える。</p>
+</li>
+<li>
+<p>公開ホストサービス<br>
+「境界づけられたコンテキスト」の内容にアクセスできる公開サービス。</p>
+</li>
+<li>
+<p>公表された言語<br>
+2つの境界づけられたコンテキスト内のモデルを変換する場合の共通の言語。</p>
+</li>
+<li>
+<p>腐敗防止層<br>
+下流側のチームが上流側の機能を自コンテキストのドメインモデルとして変換するため。</p>
+</li>
+</ul>
 </div>
 </li>
 </ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+他のコンテキストにアクセスできない場合でも、自分のコンテキストが正しく動作するように設計
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">結果整合性</dt>
+<dd>
+<p>リアルタイム同期が行われなくても、状態の整合性が最終的に取れていれば問題無いこと</p>
+</dd>
+<dt class="hdlist1">ミニマル指向</dt>
+<dd>
+<p>コンテキスト間で同期するデータを最小にし、リモートモデルの属性のうち必要なものだけをローカルモデルに連携させること</p>
+</dd>
+<dt class="hdlist1">エンティティ</dt>
+<dd>
+<p>一意なものを表現する概念。長期にわたって変更（ライフサイクル）を管理する必要があるもの。</p>
+</dd>
+<dt class="hdlist1">値オブジェクト</dt>
+<dd>
+<p>一意に識別して変更を管理する必要がないもの</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ヘキサゴナルアーキテクチャ概念整理"><a class="anchor" href="#_ヘキサゴナルアーキテクチャ概念整理"></a>2. <strong>ヘキサゴナルアーキテクチャ概念整理</strong></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">ヘキサゴナルアーキテクチャ</dt>
+<dd>
+<p>UI層やインフラストラクチャ層の部分をフロントエンドやバックエンドといった１つの塊ではなく、独立したアダプタによって適切に管理する。
+アプリケーション（ドメイン）層を中心に捉え、ユーザー操作／自動テストといった入力側もデータベース／モックといった出力側も、全てまとめて差し替え可能な外部インターフェイスとして扱う</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
