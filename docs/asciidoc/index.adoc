@@ -1,3 +1,12 @@
+:toc: left
+:toctitle: 目次
+:sectnums:
+:sectanchors:
+:sectinks:
+:chapter-label:
+
+= fuyu-note - asciidoc
+
 == *Asciidocの使い方*
 
 *基本的な使い方*

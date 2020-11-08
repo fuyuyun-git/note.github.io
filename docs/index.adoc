@@ -15,5 +15,4 @@ link:asciidoc[asciidoc]
 link:github[github]
 
 == その他
-link:other memo[other]
-
+link:other[other]
