@@ -1,0 +1,146 @@
+:toc: left
+:toctitle: 目次
+:sectnums:
+:sectanchors:
+:sectinks:
+:chapter-label:
+
+= fuyu-note - Spring
+
+== Java
+
+ ** コンストラクタ +
+コンストラクタとは、クラスからオブジェクトを作成した際に、自動的に実行されるメソッドのこと。
+メンバ変数の初期化などの主に行う。
+通常のメソッドの戻り値の型指定が無いものと考えて下さい。またメソッド名はクラス名と同じ名前にする。
+
+ ** デフォルトコンストラクタ +
+コンストラクタを1つも定義していない場合、自動的にデフォルトコンストラクタと呼ばれるコンストラクタが作成される。
+何もしないようなデフォルトのコンストラクタですが、親クラスのコンストラクタを呼び出すという動作をしている。
+明示的にコンストラクタを1つでも記述した場合、デフォルトコンストラクタは作成されない。
+Lombokで自動生成する場合は下記。
+ @NoArgsConstructor
+Lombokで全メンバへ値をセットするための引数付きコンストラクタを自動生成する場合は下記。
+ @AllArgsConsructor
+
+ ** DTO +
+基本的にはデータを格納するフィールド群とそれらへのアクセサメソッド(Getter/Setter)のみで構成。
+....
+package com.example.mynavi.backend.app.model;
+import lombok.*;
+import java.io.Serializable;
+
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class User implements Serializable {
+
+    private Long userId;
+    private String userName;
+}
+....
+
+
+ ** Builderパターン +
+オブジェクト生成の過程を抽象化することにより、動的にオブジェクトの生成を可能とする。
+Lombokの場合は下記。
+ @Builder
+
+ ** Getter/Setterパターン +
+「特定のフィールドに対し、そのデータを外部から取得するメソッド、あるいはそのデータを外部から変更するメソッドを用意してあげる」というパターン
+ @Getter
+ @Setter
+
+ ** Stream API +
+コレクションの要素へのアクセスを許可されたもの、コレクションの別の形態。
+1. コレクションからstreamを取得
+2. streamに対して満足するまで「中間操作」を実行。コレクションの中身を都合よく変換
+3. 「終端操作」で変換したコレクションの中身に対して処理を適用する
+
+ ** ラムダ式 +
+(メソッドの引数列) -> {処理内容}
+
+== Spring
+
+ ** @Controller +
+主にWebページ用のコントローラで使用する。
+Webページ用コントローラはJSPやテンプレートエンジンのViewに遷移してレスポンスのHTMLを生成するので、基本的にメソッドの戻り値はViewの遷移先を指定するのに使用する。
+....
+@Controller
+public class BackendForFrontendController {
+
+    @Autowired
+    RestOperations restOperations;
+
+    @RequestMapping(method = RequestMethod.GET, value = "users")
+    public String getUsers(Model model){
+        String service = "/backend/api/v1/users";
+        model.addAttribute("users", restOperations.getForObject(service, User[].class));
+        return "users";
+    }
+}
+....
+
+ ** @RestController +
+JsonやXML等を返すWebAPI用のコントローラで使用する。
+こちらはViewに遷移しないのでメソッドの戻り値はレスポンスのコンテンツになる。
+....
+@RestController
+@RequestMapping("todos")
+public class TodoController {
+
+    @Autowired
+    TodoService todoService;
+
+    @Autowired
+    Mapper beanMapper;
+
+    @GetMapping
+    public List<TodoResource> getTodos(){
+        Collection<Todo> todos = todoService.findAll();
+        return todos.stream().map(todo -> beanMapper.map(todo, TodoResource.class))
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("{todoId}")
+    public TodoResource getTodo(@PathVariable("todoId") Long todoId) {
+        Todo todo = todoService.findOne(todoId);
+        return beanMapper.map(todo, TodoResource.class);
+    }
+}
+....
+
+ ** @Autowired +
+インスタンス変数（注入先の変数）の前に@Autowiredをつけると、@Componentアノテーションのついたクラスの中から該当するものを探し、newしてインスタンスを突っ込んでくれる。
+
+ ** @Component +
+インスタンスを Spring 管理下（DIコンテナに管理させる）におくため、クラスに付けるアノテーション。SpringMVC や Spring Bootでは、慣習的に @Component の変わりに @Controller、@Service、@Repository を使用する。
+
+ ** @Configuration +
+クラス宣言の前に記述。このアノテーションは、このクラスがBeanの設定を行うものであることを示す。
+
+ ** @Bean +
+Beanを作成するメソッドの前に記述。これを記述すると、そのメソッドをBeanインスタンス作成のためのものと認識する。
+
+ ** @ConfigurationProperties +
+Spring Bootの機能。
+
+ ** @SpringBootApplication
+以下の三つの機能を有効にできる。
+@EnableAutoConfiguration: Spring Boot の自動構成メカニズムを有効にする
+@ComponentScan: アプリケーションが配置されているパッケージで @Component スキャンを有効にする ( ベストプラクティスを見る)
+@Configuration: コンテキストに追加の Bean を登録したり、追加の構成クラスをインポートしたりできます。
+
+ ** Dozer +
+Java Beanのマッピング機能ライブラリである。 変換元のBeanから変換先のBeanに、再帰的（ネストした構造）に、値をコピーする。
+Beanマッピングは、一つのBeanを他のBeanにフィールド値をコピーすることである。
+アプリケーションの異なるレイヤ間(アプリケーション層とドメイン層)で、データの受け渡しをする場合など、Beanマッピングが必要となるケースは多い。
+
+
+ ** application.properties vs application.yml
+プロパティファイル（.properties）ではプレーンなKey Valueとしてプロパティを定義。
+YAMLは構造的なKey Valueとしてプロパティを定義。
+
+

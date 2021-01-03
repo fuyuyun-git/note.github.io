@@ -17,7 +17,7 @@ link:spring[spring]
 == DDDの研究
 link:DDD[DDD]
 
-=== 検証作業
+== 検証作業
 link:theme[tasks]
 
 == asciidocの使い方
