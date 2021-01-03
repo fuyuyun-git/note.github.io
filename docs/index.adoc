@@ -8,8 +8,17 @@
 
 = fuyu-note
 
+== AWS ECS上に構築するSpringアプリケーションハンズオン
+link:hands-on[AWS-CN]
+
+== Spring,Spring bootの勉強
+link:spring[spring]
+
 == DDDの研究
 link:DDD[DDD]
+
+=== 検証作業
+link:theme[tasks]
 
 == asciidocの使い方
 link:asciidoc[asciidoc]

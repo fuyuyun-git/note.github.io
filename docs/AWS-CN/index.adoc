@@ -1,0 +1,19 @@
+:toc: left
+:toctitle: 目次
+:sectnums:
+:sectanchors:
+:sectinks:
+:chapter-label:
+
+= fuyu-note - DDD
+
+== *サブネットの作成*
+
+== *ALBの作成*
+パブリックサブネットのロードバランサ作成
+プライベートサブネットのロードバランサ作成
+
+== *パスベースのルーティング設定*
+
+== *プロジェクトの作成＊
+image::1_dependencies.png

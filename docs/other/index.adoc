@@ -11,6 +11,10 @@
 
 * 8080 already in useが出たとき
 
- sudo lsof -i :8080
+ $ sudo lsof -i :8080
 
- sudo kill -9 2866
+ $ sudo kill -9 2866
+
+* 複数のjavaがインストールされていて確認したい時
+
+ $ sudo alternatives --config java
