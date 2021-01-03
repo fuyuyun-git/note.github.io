@@ -442,14 +442,72 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_dddの概念整理">1. <strong>DDDの概念整理</strong></a></li>
-<li><a href="#_ヘキサゴナルアーキテクチャ概念整理">2. <strong>ヘキサゴナルアーキテクチャ概念整理</strong></a></li>
+<li><a href="#_オブジェクト指向">1. <strong>オブジェクト指向</strong></a></li>
+<li><a href="#_umlの整理">2. <strong>UMLの整理</strong></a></li>
+<li><a href="#_dddの概念整理">3. <strong>DDDの概念整理</strong></a></li>
+<li><a href="#_ヘキサゴナルアーキテクチャ概念整理">4. <strong>ヘキサゴナルアーキテクチャ概念整理</strong></a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_dddの概念整理"><a class="anchor" href="#_dddの概念整理"></a>1. <strong>DDDの概念整理</strong></h2>
+<h2 id="_オブジェクト指向"><a class="anchor" href="#_オブジェクト指向"></a>1. <strong>オブジェクト指向</strong></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>クラス＝モジュール＝型＝概念
+クラスが属性（インスタンス変数）と操作（メソッド）をカプセル化して定義する単位であり、かつモデル化対象に存在する概念を表現する際の単位であり、プログラミングの際に自由に導入できるユーザー定義可能なデータ型「抽象データ型（abstract data type）」であり、それがオブジェクト指向でソフトウェアを作っていく際の基本的な管理対象としてのモジュールの単位になる、</p>
+</div>
+<div class="paragraph">
+<p>「関係するデータと手続きのカプセル化」
+「クラスによるオブジェクトの抽象化」
+「汎化（継承）によるクラス分類」
+「関連によるオブジェクトの参照」
+「集約による全体部分管理（コンポジット）」
+「ポリモルフィズム（多義性/多相性/多態性）によるインタフェース実現」
+「自律した状態マシンとしてのオブジェクト」
+「開放閉鎖モジュールとしてのオブジェクト」</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">カプセル化</dt>
+<dd>
+<p>モジュールを公開部分と非公開部分に分け、公開部分のみ参照するように作成しておく。</p>
+</dd>
+<dt class="hdlist1">継承</dt>
+<dd>
+<p>共通の性質に着目して一般的なクラスを定義したり、渡久地の性質に着目して特殊化されたクラスを定義したりすることで、クラスの階層構造を作ることができる。「is-a」の関係。</p>
+</dd>
+<dt class="hdlist1">ポリモーフィズム</dt>
+<dd>
+<p>メッセージを送信する側のオブジェクトは、同一のメッセージを異るオブジェクトに送信するが、メッセージを受信する側のオブジェクトは、それぞれ異る振る舞いを行う。</p>
+</dd>
+<dt class="hdlist1">開放閉鎖モジュールとしてのオブジェクト</dt>
+<dd>
+<p>外部にはインタフェースとして抽象クラスだけを公開し，データ構造や機能は抽象クラスのインタフェースを守るためそのサブクラスとして実装</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_umlの整理"><a class="anchor" href="#_umlの整理"></a>2. <strong>UMLの整理</strong></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">概念モデル</dt>
+<dd>
+<p>モデル化対象である業務領域に登場する、その業務のしくみを表現するのに必要不可欠なキーとなる構成要素を概念クラスとして定義し、そうした概念クラスどうしの関係として業務を再構成したもの</p>
+</dd>
+<dt class="hdlist1">クラス図</dt>
+<dd>
+<p>システム内のオブジェクトタイプとそれらの間に存在する各種の静的な関係を記述。クラスのプロパティと操作、オブジェクト同士がどのように結合されるかにかかわる制約も表す。</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dddの概念整理"><a class="anchor" href="#_dddの概念整理"></a>3. <strong>DDDの概念整理</strong></h2>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
@@ -591,7 +649,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_ヘキサゴナルアーキテクチャ概念整理"><a class="anchor" href="#_ヘキサゴナルアーキテクチャ概念整理"></a>2. <strong>ヘキサゴナルアーキテクチャ概念整理</strong></h2>
+<h2 id="_ヘキサゴナルアーキテクチャ概念整理"><a class="anchor" href="#_ヘキサゴナルアーキテクチャ概念整理"></a>4. <strong>ヘキサゴナルアーキテクチャ概念整理</strong></h2>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
@@ -607,7 +665,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-11-08 14:54:18 UTC
+Last updated 2021-01-03 07:27:17 UTC
 </div>
 </div>
 </body>
