@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<title>fuyu-note - github</title>
+<title>fuyu-note - Spring</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -438,158 +438,206 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>fuyu-note - github</h1>
+<h1>fuyu-note - Spring</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_githubの使い方">1. <strong>Githubの使い方</strong></a>
-<ul class="sectlevel2">
-<li><a href="#_基本的な手順">1.1. <strong>基本的な手順</strong></a></li>
-<li><a href="#_その他基本">1.2. <strong>その他基本</strong></a></li>
-</ul>
-</li>
+<li><a href="#_java">1. Java</a></li>
+<li><a href="#_spring">2. Spring</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_githubの使い方"><a class="anchor" href="#_githubの使い方"></a>1. <strong>Githubの使い方</strong></h2>
+<h2 id="_java"><a class="anchor" href="#_java"></a>1. Java</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_基本的な手順"><a class="anchor" href="#_基本的な手順"></a>1.1. <strong>基本的な手順</strong></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>コンストラクタ<br>
+コンストラクタとは、クラスからオブジェクトを作成した際に、自動的に実行されるメソッドのこと。
+メンバ変数の初期化などの主に行う。
+通常のメソッドの戻り値の型指定が無いものと考えて下さい。またメソッド名はクラス名と同じ名前にする。</p>
+</li>
+<li>
+<p>デフォルトコンストラクタ<br>
+コンストラクタを1つも定義していない場合、自動的にデフォルトコンストラクタと呼ばれるコンストラクタが作成される。
+何もしないようなデフォルトのコンストラクタですが、親クラスのコンストラクタを呼び出すという動作をしている。
+明示的にコンストラクタを1つでも記述した場合、デフォルトコンストラクタは作成されない。
+Lombokで自動生成する場合は下記。
+ @NoArgsConstructor
+Lombokで全メンバへ値をセットするための引数付きコンストラクタを自動生成する場合は下記。
+ @AllArgsConsructor</p>
+</li>
+<li>
+<p>DTO<br>
+基本的にはデータを格納するフィールド群とそれらへのアクセサメソッド(Getter/Setter)のみで構成。</p>
+</li>
+</ul>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>package com.example.mynavi.backend.app.model;
+import lombok.*;
+import java.io.Serializable;
+
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class User implements Serializable {
+
+    private Long userId;
+    private String userName;
+}</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Builderパターン<br>
+オブジェクト生成の過程を抽象化することにより、動的にオブジェクトの生成を可能とする。
+Lombokの場合は下記。
+ @Builder</p>
+</li>
+<li>
+<p>Getter/Setterパターン<br>
+「特定のフィールドに対し、そのデータを外部から取得するメソッド、あるいはそのデータを外部から変更するメソッドを用意してあげる」というパターン
+ @Getter
+ @Setter</p>
+</li>
+<li>
+<p>Stream API<br>
+コレクションの要素へのアクセスを許可されたもの、コレクションの別の形態。</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>ローカルリポジトリの場所に移動する</p>
+<p>コレクションからstreamを取得</p>
 </li>
 <li>
-<p>gitリポジトリをローカルに新たに作成する</p>
-<div class="literalblock">
-<div class="content">
-<pre>git init</pre>
-</div>
-</div>
+<p>streamに対して満足するまで「中間操作」を実行。コレクションの中身を都合よく変換</p>
 </li>
 <li>
-<p>ファイルの作成／変更／削除をgitのインデクスに追加する</p>
-<div class="literalblock">
-<div class="content">
-<pre>git add hello.html</pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>全てのファイル／ディレクトリを追加する</p>
-<div class="literalblock">
-<div class="content">
-<pre>git add .</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>変更結果をローカルリポジトリにコミットする</p>
-<div class="literalblock">
-<div class="content">
-<pre>git commit -m "add new file"</pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>変更のあった全てのファイルをコミットする</p>
-<div class="literalblock">
-<div class="content">
-<pre>git commit -a</pre>
-</div>
-</div>
-</li>
-<li>
-<p>変更点を表示してコミットする</p>
-<div class="literalblock">
-<div class="content">
-<pre>git commit -v</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>履歴を求められたら入力する</p>
-<div class="ulist">
-<ul>
-<li>
-<p>書き終わったら</p>
-<div class="literalblock">
-<div class="content">
-<pre>Esc
-:wq</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>リモートリポジトリの情報を追加する（二回目は不要）</p>
-<div class="literalblock">
-<div class="content">
-<pre>git remote add origin https://github.com//XXXXX</pre>
-</div>
-</div>
-</li>
-<li>
-<p>ローカルリポジトリをプッシュしてリモートリポジトリへ反映する</p>
-<div class="literalblock">
-<div class="content">
-<pre>git push origin main</pre>
-</div>
-</div>
+<p>「終端操作」で変換したコレクションの中身に対して処理を適用する</p>
 </li>
 </ol>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_その他基本"><a class="anchor" href="#_その他基本"></a>1.2. <strong>その他基本</strong></h3>
-<div class="ulist">
-<ul>
-<li>
-<p>確認する</p>
-<div class="literalblock">
-<div class="content">
-<pre>git status</pre>
-</div>
-</div>
 </li>
 <li>
-<p>ブランチ一覧を見る</p>
-<div class="literalblock">
-<div class="content">
-<pre>git branch</pre>
-</div>
-</div>
-</li>
-<li>
-<p>エラー対応</p>
-<div class="ulist">
-<ul>
-<li>
-<p>git pushがrejectされた時</p>
-<div class="literalblock">
-<div class="content">
-<pre>git pull origin main</pre>
-</div>
-</div>
+<p>ラムダ式<br>
+(メソッドの引数列) &#8594; {処理内容}</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_spring"><a class="anchor" href="#_spring"></a>2. Spring</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>@Controller<br>
+主にWebページ用のコントローラで使用する。
+Webページ用コントローラはJSPやテンプレートエンジンのViewに遷移してレスポンスのHTMLを生成するので、基本的にメソッドの戻り値はViewの遷移先を指定するのに使用する。</p>
 </li>
 </ul>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>@Controller
+public class BackendForFrontendController {
+
+    @Autowired
+    RestOperations restOperations;
+
+    @RequestMapping(method = RequestMethod.GET, value = "users")
+    public String getUsers(Model model){
+        String service = "/backend/api/v1/users";
+        model.addAttribute("users", restOperations.getForObject(service, User[].class));
+        return "users";
+    }
+}</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>@RestController<br>
+JsonやXML等を返すWebAPI用のコントローラで使用する。
+こちらはViewに遷移しないのでメソッドの戻り値はレスポンスのコンテンツになる。</p>
+</li>
+</ul>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>@RestController
+@RequestMapping("todos")
+public class TodoController {
+
+    @Autowired
+    TodoService todoService;
+
+    @Autowired
+    Mapper beanMapper;
+
+    @GetMapping
+    public List&lt;TodoResource&gt; getTodos(){
+        Collection&lt;Todo&gt; todos = todoService.findAll();
+        return todos.stream().map(todo -&gt; beanMapper.map(todo, TodoResource.class))
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("{todoId}")
+    public TodoResource getTodo(@PathVariable("todoId") Long todoId) {
+        Todo todo = todoService.findOne(todoId);
+        return beanMapper.map(todo, TodoResource.class);
+    }
+}</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>@Autowired<br>
+インスタンス変数（注入先の変数）の前に@Autowiredをつけると、@Componentアノテーションのついたクラスの中から該当するものを探し、newしてインスタンスを突っ込んでくれる。</p>
+</li>
+<li>
+<p>@Component<br>
+インスタンスを Spring 管理下（DIコンテナに管理させる）におくため、クラスに付けるアノテーション。SpringMVC や Spring Bootでは、慣習的に @Component の変わりに @Controller、@Service、@Repository を使用する。</p>
+</li>
+<li>
+<p>@Configuration<br>
+クラス宣言の前に記述。このアノテーションは、このクラスがBeanの設定を行うものであることを示す。</p>
+</li>
+<li>
+<p>@Bean<br>
+Beanを作成するメソッドの前に記述。これを記述すると、そのメソッドをBeanインスタンス作成のためのものと認識する。</p>
+</li>
+<li>
+<p>@ConfigurationProperties<br>
+Spring Bootの機能。</p>
+</li>
+<li>
+<p>@SpringBootApplication
+以下の三つの機能を有効にできる。
+@EnableAutoConfiguration: Spring Boot の自動構成メカニズムを有効にする
+@ComponentScan: アプリケーションが配置されているパッケージで @Component スキャンを有効にする ( ベストプラクティスを見る)
+@Configuration: コンテキストに追加の Bean を登録したり、追加の構成クラスをインポートしたりできます。</p>
+</li>
+<li>
+<p>Dozer<br>
+Java Beanのマッピング機能ライブラリである。 変換元のBeanから変換先のBeanに、再帰的（ネストした構造）に、値をコピーする。
+Beanマッピングは、一つのBeanを他のBeanにフィールド値をコピーすることである。
+アプリケーションの異なるレイヤ間(アプリケーション層とドメイン層)で、データの受け渡しをする場合など、Beanマッピングが必要となるケースは多い。</p>
+</li>
+<li>
+<p>application.properties vs application.yml
+プロパティファイル（.properties）ではプレーンなKey Valueとしてプロパティを定義。
+YAMLは構造的なKey Valueとしてプロパティを定義。</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
